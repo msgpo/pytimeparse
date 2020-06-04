@@ -8,14 +8,24 @@ setup.py
 distutils setup script for pytimeparse.
 '''
 
+import re
 from setuptools import setup, find_packages  # Always prefer setuptools over distutils
 from codecs import open  # To use a consistent encoding
 from os import path
 
 HERE = path.abspath(path.dirname(__file__))
 
-with open(path.join(HERE, 'pytimeparse', 'VERSION'), encoding='utf-8') as f:
-    VERSION = f.read().strip()
+with open(path.join(HERE, 'pytimeparse', '__init__.py'), encoding='utf-8') as f:
+    VERSION = None
+    for line in f.readlines():
+        try:
+            VERSION = re.match(r'__version__ = ["\'](.+)["\']', line).group(1)
+            break
+        except AttributeError:
+            pass
+
+    if not VERSION:
+        raise Exception('Unable to parse version number')
 
 # Get the long description from the relevant file
 with open(path.join(HERE, 'README.rst'), encoding='utf-8') as f:
@@ -89,7 +99,7 @@ setup(
     # installed, specify them here.  If using Python 2.6 or less, then these
     # have to be included in MANIFEST.in as well.
     package_data={
-        'pytimeparse': ['VERSION'],
+        'pytimeparse': [],
     },
 
     # Although 'package_data' is the preferred approach, in some case you may
