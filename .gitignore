@@ -1,8 +1,9 @@
-*.pyc
+*.py[cod]
 *~
 .DS_Store
 /.coverage
 /MANIFEST
+/.eggs
 /build/
 /dist/
 /pytimeparse.egg-info/
