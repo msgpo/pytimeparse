@@ -358,6 +358,54 @@ class TestTimeparse(unittest.TestCase):
         self.assertEqual(timeparse.timeparse('+5.6 weeks'), 3386880)
         self.assertEqual(timeparse.timeparse('-5.6 weeks'), -3386880)
 
+    def test_timeparse_34(self):
+        '''timeparse test case 34.'''
+        self.assertEqual(timeparse.timeparse('5 mos'), 12960000)
+        self.assertEqual(timeparse.timeparse('+5 mos'), 12960000)
+        self.assertEqual(timeparse.timeparse('-5 mos'), -12960000)
+
+    def test_timeparse_35(self):
+        '''timeparse test case 35.'''
+        self.assertEqual(timeparse.timeparse('5 mths'), 12960000)
+        self.assertEqual(timeparse.timeparse('+5 mths'), 12960000)
+        self.assertEqual(timeparse.timeparse('-5 mths'), -12960000)
+
+    def test_timeparse_36(self):
+        '''timeparse test case 36.'''
+        self.assertEqual(timeparse.timeparse('5 months'), 12960000)
+        self.assertEqual(timeparse.timeparse('+5 months'), 12960000)
+        self.assertEqual(timeparse.timeparse('-5 months'), -12960000)
+
+    def test_timeparse_37(self):
+        '''timeparse test case 37.'''
+        self.assertEqual(timeparse.timeparse('3 ys'), 94608000)
+        self.assertEqual(timeparse.timeparse('+3 ys'), 94608000)
+        self.assertEqual(timeparse.timeparse('-3 ys'), -94608000)
+
+    def test_timeparse_38(self):
+        '''timeparse test case 38.'''
+        self.assertEqual(timeparse.timeparse('3 yrs'), 94608000)
+        self.assertEqual(timeparse.timeparse('+3 yrs'), 94608000)
+        self.assertEqual(timeparse.timeparse('-3 yrs'), -94608000)
+
+    def test_timeparse_39(self):
+        '''timeparse test case 39.'''
+        self.assertEqual(timeparse.timeparse('3 years'), 94608000)
+        self.assertEqual(timeparse.timeparse('+3 years'), 94608000)
+        self.assertEqual(timeparse.timeparse('-3 years'), -94608000)
+
+    def test_timeparse_40(self):
+        '''timeparse test case 40.'''
+        self.assertEqual(
+            timeparse.timeparse('3 years, 5 months, 2 days'),
+            107740800)
+        self.assertEqual(
+            timeparse.timeparse('+3 years, 5 months, 2 days'),
+            107740800)
+        self.assertEqual(
+            timeparse.timeparse('-3 years, 5 months, 2 days'),
+            -107740800)
+
     def test_doctest(self):
         '''Run timeparse doctests.'''
         self.assertTrue(doctest.testmod(timeparse, raise_on_error=True))
