@@ -8,14 +8,14 @@ setup.py
 distutils setup script for pytimeparse.
 '''
 
+import io
 import re
-from setuptools import setup, find_packages  # Always prefer setuptools over distutils
-from codecs import open  # To use a consistent encoding
 from os import path
+from setuptools import setup, find_packages
 
 HERE = path.abspath(path.dirname(__file__))
 
-with open(path.join(HERE, 'pytimeparse', '__init__.py'), encoding='utf-8') as f:
+with io.open(path.join(HERE, 'pytimeparse', '__init__.py'), encoding='utf-8') as f:
     VERSION = None
     for line in f.readlines():
         try:
@@ -28,7 +28,7 @@ with open(path.join(HERE, 'pytimeparse', '__init__.py'), encoding='utf-8') as f:
         raise Exception('Unable to parse version number')
 
 # Get the long description from the relevant file
-with open(path.join(HERE, 'README.rst'), encoding='utf-8') as f:
+with io.open(path.join(HERE, 'README.rst'), encoding='utf-8') as f:
     LONG_DESCRIPTION = f.read()
 
 setup(

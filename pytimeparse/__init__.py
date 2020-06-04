@@ -9,8 +9,6 @@ __init__.py
 '''
 
 from __future__ import absolute_import
-from codecs import open
-from os import path
 
 # Version. For each new release, the version number should be updated.
 __version__ = '1.1.8'
